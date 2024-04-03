@@ -5,6 +5,7 @@ import com.example.demo.business.StateService;
 import com.example.demo.entity.Country;
 import com.example.demo.entity.State;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class StateController {
     private StateService stateService;
 
     @GetMapping("/getStateCountryId/{id}")
+    @Cacheable(value="cacheGetCountryId")
     public List<State> getStateAccordingToCountrId(@PathVariable int id){
         return stateService.getStateAccoringToCountryId(id);
     }
@@ -33,6 +35,7 @@ public class StateController {
         return stateService.getStateStartKeyword(keyword);
     }
     @GetMapping("/getStateDesc")
+    @Cacheable(value="cacheGetDesc")
     public List<State> getStateDesc(){
         return stateService.getStateDesc();
     }

@@ -16,6 +16,8 @@ public class StateService {
     private StateRepository stateRepository;
 
     public List<State> getStateAccoringToCountryId(int id){
+        System.out.println("db gidildi");
+        //bunu eklememizin sebebi ilk kez calistirkan db gidildi mesajı gormek ikinci calistirinca gelmemesi lazim cunku on bellekten alacaz controller tarafinda
         return stateRepository.findByCountryId(id);
     }
 
